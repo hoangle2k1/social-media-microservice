@@ -10,6 +10,6 @@ target/
 *.iml
 *.ipr
 
-frontend/
+frontend/node_modules
 
 
