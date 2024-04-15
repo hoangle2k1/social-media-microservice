@@ -1,7 +1,8 @@
 package com.gmail.repository;
 
 import com.gmail.model.Lists;
-import model.com.gmail.User;
+
+import com.gmail.model.User;
 import com.gmail.repository.projection.*;
 import com.gmail.repository.projection.*;
 import org.springframework.data.jpa.repository.JpaRepository;

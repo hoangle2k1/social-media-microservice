@@ -4,9 +4,9 @@ spring:
     application:
         name: user-service
     datasource:
-        url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:5432/user
+        url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:5433/user
         username: postgres
-        password: root
+        password:
         driverClassName: org.postgresql.Driver
     jpa:
         hibernate:

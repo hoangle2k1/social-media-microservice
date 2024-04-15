@@ -1,6 +1,6 @@
 package com.gmail.repository;
 
-import model.com.gmail.User;
+import com.gmail.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

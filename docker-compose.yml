@@ -4,12 +4,12 @@ services:
         image: postgres
         environment:
             POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: root
+            POSTGRES_PASSWORD:
             PGDATA: /data/postgres
         volumes:
             - postgres:/data/postgres
         ports:
-            - "5432:5432"
+            - "5433:5432"
         networks:
             - postgres
         restart: unless-stopped
@@ -102,259 +102,259 @@ services:
             monitoring:
                 aliases:
                     - prometheus
-
-    eureka-server:
-        image: hoangle/twitter-spring-reactjs:eureka-server
-        container_name: eureka-server
-        hostname: eureka-server
-        environment:
-            EUREKA_HOST: eureka-server
-            ZIPKIN_HOST: zipkin
-        ports:
-            - "8761:8761"
-        networks:
-            - spring
-        depends_on:
-            - zipkin
-
-    config-server:
-        image: hoangle/twitter-spring-reactjs:config-server
-        container_name: config-server
-        hostname: config-server
-        environment:
-            EUREKA_HOST: eureka-server
-            ZIPKIN_HOST: zipkin
-        ports:
-            - "8888:8888"
-        networks:
-            - spring
-        depends_on:
-            - zipkin
-            - eureka-server
-
-    api-gateway:
-        image: hoangle/twitter-spring-reactjs:api-gateway
-        container_name: api-gateway
-        hostname: api-gateway
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            ZIPKIN_HOST: zipkin
-        ports:
-            - "8000:8000"
-        networks:
-            - spring
-        depends_on:
-            - zipkin
-            - eureka-server
-            - config-server
-
-    user-service:
-        image: hoangle/twitter-spring-reactjs:user-service
-        container_name: user-service
-        hostname: user-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            DATASOURCE_HOST: postgres
-            ZIPKIN_HOST: zipkin
-            RABBITMQ_HOST: rabbitmq
-        ports:
-            - "8001:8001"
-        networks:
-            - postgres
-            - spring
-        depends_on:
-            - postgres
-            - zipkin
-            - rabbitmq
-            - broker
-            - eureka-server
-            - config-server
-
-    tweet-service:
-        image: hoangle/twitter-spring-reactjs:tweet-service
-        container_name: tweet-service
-        hostname: tweet-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            DATASOURCE_HOST: postgres
-            ZIPKIN_HOST: zipkin
-            RABBITMQ_HOST: rabbitmq
-        ports:
-            - "8002:8002"
-        networks:
-            - postgres
-            - spring
-        depends_on:
-            - postgres
-            - zipkin
-            - rabbitmq
-            - eureka-server
-            - config-server
-
-    topic-service:
-        image: hoangle/twitter-spring-reactjs:topic-service
-        container_name: topic-service
-        hostname: topic-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            DATASOURCE_HOST: postgres
-            ZIPKIN_HOST: zipkin
-            RABBITMQ_HOST: rabbitmq
-        ports:
-            - "8003:8003"
-        networks:
-            - postgres
-            - spring
-        depends_on:
-            - postgres
-            - zipkin
-            - rabbitmq
-            - broker
-            - eureka-server
-            - config-server
-
-    tag-service:
-        image: hoangle/twitter-spring-reactjs:tag-service
-        container_name: tag-service
-        hostname: tag-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            DATASOURCE_HOST: postgres
-            ZIPKIN_HOST: zipkin
-            RABBITMQ_HOST: rabbitmq
-        ports:
-            - "8004:8004"
-        networks:
-            - postgres
-            - spring
-        depends_on:
-            - postgres
-            - zipkin
-            - rabbitmq
-            - eureka-server
-            - config-server
-
-    lists-service:
-        image: hoangle/twitter-spring-reactjs:lists-service
-        container_name: lists-service
-        hostname: lists-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            DATASOURCE_HOST: postgres
-            ZIPKIN_HOST: zipkin
-            RABBITMQ_HOST: rabbitmq
-        ports:
-            - "8005:8005"
-        networks:
-            - postgres
-            - spring
-        depends_on:
-            - postgres
-            - zipkin
-            - rabbitmq
-            - eureka-server
-            - config-server
-
-    chat-service:
-        image: hoangle/twitter-spring-reactjs:chat-service
-        container_name: chat-service
-        hostname: chat-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            DATASOURCE_HOST: postgres
-            ZIPKIN_HOST: zipkin
-            RABBITMQ_HOST: rabbitmq
-        ports:
-            - "8006:8006"
-        networks:
-            - postgres
-            - spring
-        depends_on:
-            - postgres
-            - zipkin
-            - rabbitmq
-            - eureka-server
-            - config-server
-
-    notification-service:
-        image: hoangle/twitter-spring-reactjs:notification-service
-        container_name: notification-service
-        hostname: notification-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            DATASOURCE_HOST: postgres
-            ZIPKIN_HOST: zipkin
-            RABBITMQ_HOST: rabbitmq
-        ports:
-            - "8007:8007"
-        networks:
-            - postgres
-            - spring
-        depends_on:
-            - postgres
-            - zipkin
-            - rabbitmq
-            - eureka-server
-            - config-server
-
-    email-service:
-        image: hoangle/twitter-spring-reactjs:email-service
-        container_name: email-service
-        hostname: email-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            ZIPKIN_HOST: zipkin
-        ports:
-            - "8020:8020"
-        networks:
-            - spring
-        depends_on:
-            - zipkin
-            - eureka-server
-            - config-server
-
-    image-service:
-        image: hoangle/twitter-spring-reactjs:image-service
-        container_name: image-service
-        hostname: image-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            ZIPKIN_HOST: zipkin
-        ports:
-            - "8021:8021"
-        networks:
-            - spring
-        depends_on:
-            - zipkin
-            - eureka-server
-            - config-server
-
-    websocket-service:
-        image: hoangle/twitter-spring-reactjs:websocket-service
-        container_name: websocket-service
-        hostname: websocket-service
-        environment:
-            EUREKA_HOST: eureka-server
-            CONFIG_SERVER_HOST: config-server
-            ZIPKIN_HOST: zipkin
-        ports:
-            - "8022:8022"
-        networks:
-            - spring
-        depends_on:
-            - zipkin
-            - eureka-server
-            - config-server
+#
+#    eureka-server:
+#        image: hoangle/twitter-spring-reactjs:eureka-server
+#        container_name: eureka-server
+#        hostname: eureka-server
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            ZIPKIN_HOST: zipkin
+#        ports:
+#            - "8761:8761"
+#        networks:
+#            - spring
+#        depends_on:
+#            - zipkin
+#
+#    config-server:
+#        image: hoangle/twitter-spring-reactjs:config-server
+#        container_name: config-server
+#        hostname: config-server
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            ZIPKIN_HOST: zipkin
+#        ports:
+#            - "8888:8888"
+#        networks:
+#            - spring
+#        depends_on:
+#            - zipkin
+#            - eureka-server
+#
+#    api-gateway:
+#        image: hoangle/twitter-spring-reactjs:api-gateway
+#        container_name: api-gateway
+#        hostname: api-gateway
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            ZIPKIN_HOST: zipkin
+#        ports:
+#            - "8000:8000"
+#        networks:
+#            - spring
+#        depends_on:
+#            - zipkin
+#            - eureka-server
+#            - config-server
+#
+#    user-service:
+#        image: hoangle/twitter-spring-reactjs:user-service
+#        container_name: user-service
+#        hostname: user-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            DATASOURCE_HOST: postgres
+#            ZIPKIN_HOST: zipkin
+#            RABBITMQ_HOST: rabbitmq
+#        ports:
+#            - "8001:8001"
+#        networks:
+#            - postgres
+#            - spring
+#        depends_on:
+#            - postgres
+#            - zipkin
+#            - rabbitmq
+#            - broker
+#            - eureka-server
+#            - config-server
+#
+#    tweet-service:
+#        image: hoangle/twitter-spring-reactjs:tweet-service
+#        container_name: tweet-service
+#        hostname: tweet-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            DATASOURCE_HOST: postgres
+#            ZIPKIN_HOST: zipkin
+#            RABBITMQ_HOST: rabbitmq
+#        ports:
+#            - "8002:8002"
+#        networks:
+#            - postgres
+#            - spring
+#        depends_on:
+#            - postgres
+#            - zipkin
+#            - rabbitmq
+#            - eureka-server
+#            - config-server
+#
+#    topic-service:
+#        image: hoangle/twitter-spring-reactjs:topic-service
+#        container_name: topic-service
+#        hostname: topic-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            DATASOURCE_HOST: postgres
+#            ZIPKIN_HOST: zipkin
+#            RABBITMQ_HOST: rabbitmq
+#        ports:
+#            - "8003:8003"
+#        networks:
+#            - postgres
+#            - spring
+#        depends_on:
+#            - postgres
+#            - zipkin
+#            - rabbitmq
+#            - broker
+#            - eureka-server
+#            - config-server
+#
+#    tag-service:
+#        image: hoangle/twitter-spring-reactjs:tag-service
+#        container_name: tag-service
+#        hostname: tag-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            DATASOURCE_HOST: postgres
+#            ZIPKIN_HOST: zipkin
+#            RABBITMQ_HOST: rabbitmq
+#        ports:
+#            - "8004:8004"
+#        networks:
+#            - postgres
+#            - spring
+#        depends_on:
+#            - postgres
+#            - zipkin
+#            - rabbitmq
+#            - eureka-server
+#            - config-server
+#
+#    lists-service:
+#        image: hoangle/twitter-spring-reactjs:lists-service
+#        container_name: lists-service
+#        hostname: lists-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            DATASOURCE_HOST: postgres
+#            ZIPKIN_HOST: zipkin
+#            RABBITMQ_HOST: rabbitmq
+#        ports:
+#            - "8005:8005"
+#        networks:
+#            - postgres
+#            - spring
+#        depends_on:
+#            - postgres
+#            - zipkin
+#            - rabbitmq
+#            - eureka-server
+#            - config-server
+#
+#    chat-service:
+#        image: hoangle/twitter-spring-reactjs:chat-service
+#        container_name: chat-service
+#        hostname: chat-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            DATASOURCE_HOST: postgres
+#            ZIPKIN_HOST: zipkin
+#            RABBITMQ_HOST: rabbitmq
+#        ports:
+#            - "8006:8006"
+#        networks:
+#            - postgres
+#            - spring
+#        depends_on:
+#            - postgres
+#            - zipkin
+#            - rabbitmq
+#            - eureka-server
+#            - config-server
+#
+#    notification-service:
+#        image: hoangle/twitter-spring-reactjs:notification-service
+#        container_name: notification-service
+#        hostname: notification-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            DATASOURCE_HOST: postgres
+#            ZIPKIN_HOST: zipkin
+#            RABBITMQ_HOST: rabbitmq
+#        ports:
+#            - "8007:8007"
+#        networks:
+#            - postgres
+#            - spring
+#        depends_on:
+#            - postgres
+#            - zipkin
+#            - rabbitmq
+#            - eureka-server
+#            - config-server
+#
+#    email-service:
+#        image: hoangle/twitter-spring-reactjs:email-service
+#        container_name: email-service
+#        hostname: email-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            ZIPKIN_HOST: zipkin
+#        ports:
+#            - "8020:8020"
+#        networks:
+#            - spring
+#        depends_on:
+#            - zipkin
+#            - eureka-server
+#            - config-server
+#
+#    image-service:
+#        image: hoangle/twitter-spring-reactjs:image-service
+#        container_name: image-service
+#        hostname: image-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            ZIPKIN_HOST: zipkin
+#        ports:
+#            - "8021:8021"
+#        networks:
+#            - spring
+#        depends_on:
+#            - zipkin
+#            - eureka-server
+#            - config-server
+#
+#    websocket-service:
+#        image: hoangle/twitter-spring-reactjs:websocket-service
+#        container_name: websocket-service
+#        hostname: websocket-service
+#        environment:
+#            EUREKA_HOST: eureka-server
+#            CONFIG_SERVER_HOST: config-server
+#            ZIPKIN_HOST: zipkin
+#        ports:
+#            - "8022:8022"
+#        networks:
+#            - spring
+#        depends_on:
+#            - zipkin
+#            - eureka-server
+#            - config-server
 
 networks:
     postgres:

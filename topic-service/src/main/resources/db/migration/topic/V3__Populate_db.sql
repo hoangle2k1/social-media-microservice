@@ -32,7 +32,7 @@ INSERT INTO users(id, full_name, username, private_profile) VALUES (1, 'Random',
 INSERT INTO users(id, full_name, username, private_profile) VALUES (2, 'MrCat', 'Cat', true);
 INSERT INTO users(id, full_name, username, private_profile) VALUES (3, 'Kitty', 'Kitty', true);
 INSERT INTO users(id, full_name, username, private_profile) VALUES (4, 'JavaCat', 'JavaCat', false);
-INSERT INTO users(id, full_name, username, private_profile) VALUES (5, 'КотБегемот', 'Кот Бегемот', false);
+INSERT INTO users(id, full_name, username, private_profile) VALUES (5, 'hoangle', 'Кот Бегемот', false);
 
 -- user_subscriptions
 INSERT INTO user_subscriptions (subscriber_id, user_id) VALUES (1, 2);

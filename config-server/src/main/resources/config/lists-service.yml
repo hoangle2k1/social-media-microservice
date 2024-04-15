@@ -4,9 +4,9 @@ spring:
     application:
         name: lists-service
     datasource:
-        url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:5432/lists
+        url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:5433/lists
         username: postgres
-        password: root
+        password:
         driverClassName: org.postgresql.Driver
     jpa:
         hibernate:

@@ -1,6 +1,6 @@
 package com.gmail.repository;
 
-import model.com.gmail.User;
+import com.gmail.model.User;
 import com.gmail.repository.projection.BlockedUserProjection;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -3,7 +3,7 @@ INSERT INTO users(id, full_name, username, private_profile, active, about, avata
 INSERT INTO users(id, full_name, username, private_profile, active, about, avatar, muted_direct_messages) VALUES (2, 'MrCat', 'Cat', true, true, 'Hello twitter!', 'https://perfumeweb2.s3.eu-central-1.amazonaws.com/348b7dbe-3ac5-477f-8483-edc24f53091b_814370.jpg', false);
 INSERT INTO users(id, full_name, username, private_profile, active, about, avatar, muted_direct_messages) VALUES (3, 'Kitty', 'Kitty', true, true, 'Hello twitter!', 'https://perfumeweb2.s3.eu-central-1.amazonaws.com/a7e03e7c-c05f-4e30-ba8c-2271fd0b4b43_779301.jpg', true);
 INSERT INTO users(id, full_name, username, private_profile, active, about, avatar, muted_direct_messages) VALUES (4, 'JavaCat', 'JavaCat', false, true, 'Hello twitter!', 'https://perfumeweb2.s3.eu-central-1.amazonaws.com/b999d944-c9ec-4a9c-b356-db937211df5c_Ec1OBK3XsAEjVZR.png', false);
-INSERT INTO users(id, full_name, username, private_profile, active, about, avatar, muted_direct_messages) VALUES (5, 'КотБегемот', 'Кот Бегемот', false, true, 'Hello twitter!', 'https://perfumeweb2.s3.eu-central-1.amazonaws.com/68a7b0d5-2b0c-493e-85ff-098725c52ecc_Cl5DjoUWYAAslnd.jfif', false);
+INSERT INTO users(id, full_name, username, private_profile, active, about, avatar, muted_direct_messages) VALUES (5, 'hoangle', 'Кот Бегемот', false, true, 'Hello twitter!', 'https://perfumeweb2.s3.eu-central-1.amazonaws.com/68a7b0d5-2b0c-493e-85ff-098725c52ecc_Cl5DjoUWYAAslnd.jfif', false);
 
 -- user_subscriptions
 INSERT INTO user_subscriptions (subscriber_id, user_id) VALUES (1, 2);
