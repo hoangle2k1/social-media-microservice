@@ -486,7 +486,7 @@ export const mockMediaTweets = [
         "user": {
             "id": 5,
             "email": "user2018@gmail.com",
-            "fullName": "КотБегемот",
+            "fullName": "hoangle",
             "username": "Кот Бегемот",
             "avatar": "https://twitterclonestorage.s3.eu-central-1.amazonaws.com/68a7b0d5-2b0c-493e-85ff-098725c52ecc_Cl5DjoUWYAAslnd.jfif",
             "isPrivateProfile": false,

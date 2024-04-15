@@ -19,8 +19,8 @@ export const useAddTweetFormStyles = makeStyles(() => ({
         fontFamily: "inherit",
         resize: "none",
         backgroundColor: "transparent",
-        caretColor: localStorage.getItem(BACKGROUND) === BackgroundTheme.DEFAULT ? "#000" : "#fff",
-        color: localStorage.getItem(BACKGROUND) === BackgroundTheme.DEFAULT ? "#000" : "#fff"
+        caretColor: "#000",
+        color: "#000"
     },
     formItems: {
         marginLeft: 58
