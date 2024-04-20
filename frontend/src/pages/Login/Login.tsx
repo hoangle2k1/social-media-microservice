@@ -2,8 +2,6 @@ import React, { ChangeEvent, FC, FormEvent, ReactElement, useEffect, useState } 
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { Button, Typography } from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
-
 import { LoginTextField } from "./LoginInputField";
 import { useLoginStyles } from "./LoginStyles";
 import { selectUserIsError } from "../../store/ducks/user/selectors";
@@ -43,7 +41,6 @@ const Login: FC = (): ReactElement => {
         <div className={classes.container}>
             <div>
                 {TweetIcon}
-                {/*<TwitterIcon />*/}
             </div>
             <Typography variant={"h4"} component={"div"} style={{ color: '#1fb3ed' }}>
                 Log in to Social app

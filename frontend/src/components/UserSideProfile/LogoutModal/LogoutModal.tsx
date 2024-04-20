@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import DialogContent from "@material-ui/core/DialogContent";
-import TwitterIcon from "@material-ui/icons/Twitter";
 import Typography from "@material-ui/core/Typography";
 import { Button, ListItem } from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";

@@ -1,6 +1,5 @@
 import React, { FC, ReactElement } from "react";
 import { Route } from "react-router-dom";
-import TwitterIcon from "@material-ui/icons/Twitter";
 import { Typography } from "@material-ui/core";
 
 import { useForgotPasswordStyles } from "./ForgotPasswordStyles";

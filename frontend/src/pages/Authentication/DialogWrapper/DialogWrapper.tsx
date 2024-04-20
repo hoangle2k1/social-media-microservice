@@ -1,6 +1,5 @@
 import React, { FC, ReactElement, ReactNode } from "react";
 import { Button, Dialog, DialogContent } from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useDialogWrapperStyles } from "./DialogWrapperStyles";

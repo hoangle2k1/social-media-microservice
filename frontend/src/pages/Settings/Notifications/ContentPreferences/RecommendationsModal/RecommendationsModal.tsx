@@ -1,6 +1,5 @@
 import React, { FC, ReactElement } from "react";
 import { Dialog, DialogContent, Typography } from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
 
 import { useRecommendationsModalStyles } from "./RecommendationsModalStyles";
 import { useGlobalStyles } from "../../../../../util/globalClasses";

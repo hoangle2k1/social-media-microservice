@@ -1,6 +1,5 @@
 import React, { FC, ReactElement } from "react";
 import { useHistory } from "react-router-dom";
-import TwitterIcon from "@material-ui/icons/Twitter";
 import { Button, List, ListItem, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 

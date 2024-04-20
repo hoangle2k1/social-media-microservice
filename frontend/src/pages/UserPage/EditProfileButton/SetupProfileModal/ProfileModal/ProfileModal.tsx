@@ -1,6 +1,5 @@
 import React, { FC, ReactElement, ReactNode } from "react";
 import { Dialog, DialogContent, Typography } from "@material-ui/core";
-import TwitterIcon from "@material-ui/icons/Twitter";
 
 import { useProfileModalStyles } from "./ProfileModalStyles";
 import FullWidthButton from "../../../../../components/Buttons/FullWidthButton/FullWidthButton";
