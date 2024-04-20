@@ -10,6 +10,7 @@ import { selectUserIsError } from "../../store/ducks/user/selectors";
 import { fetchSignIn, setUserLoadingStatus } from "../../store/ducks/user/actionCreators";
 import { ACCOUNT_FORGOT, ACCOUNT_SIGNIN } from "../../constants/path-constants";
 import { LoadingStatus } from "../../types/common";
+import {TweetIcon} from "../../icons";
 
 const Login: FC = (): ReactElement => {
     const classes = useLoginStyles();
@@ -41,10 +42,11 @@ const Login: FC = (): ReactElement => {
     return (
         <div className={classes.container}>
             <div>
-                <TwitterIcon />
+                {TweetIcon}
+                {/*<TwitterIcon />*/}
             </div>
-            <Typography variant={"h4"} component={"div"}>
-                Log in to Twitter
+            <Typography variant={"h4"} component={"div"} style={{ color: '#1fb3ed' }}>
+                Log in to Social app
             </Typography>
             {(errorStatus) && (
                 <Typography variant={"body1"} component={"div"} className={classes.error}>
@@ -91,7 +93,7 @@ const Login: FC = (): ReactElement => {
                 {" · "}
                 <Typography variant={"body1"} component={"span"}>
                     <Link to={ACCOUNT_SIGNIN}>
-                        Sign up for Twitter
+                        Sign up
                     </Link>
                 </Typography>
             </div>

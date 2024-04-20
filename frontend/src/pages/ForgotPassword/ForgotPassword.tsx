@@ -25,7 +25,7 @@ const ForgotPassword: FC = (): ReactElement => {
             <div className={classes.header}>
                 <div className={classes.headerWrapper}>
                     <span style={{ marginTop: 10 }}>
-                        <TwitterIcon />
+                        {/*<TwitterIcon />*/}
                     </span>
                     <Typography variant={"body1"} component={"span"}>
                         Password Reset

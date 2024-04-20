@@ -49,7 +49,7 @@ const SideSearch: FC = (): ReactElement => {
             <div className={classes.content}>
                 <SideSearchTextField
                     variant="outlined"
-                    placeholder="Search Twitter"
+                    placeholder="Search"
                     onChange={handleChangeText}
                     onClick={handleClickOpenPopup}
                     value={text}

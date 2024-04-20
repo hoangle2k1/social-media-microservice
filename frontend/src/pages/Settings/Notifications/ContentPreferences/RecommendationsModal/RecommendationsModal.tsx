@@ -24,7 +24,7 @@ const RecommendationsModal: FC<RecommendationsModalProps> = ({ visible, onClose 
         <Dialog open={visible} onClose={onClose}>
             <DialogContent className={globalClasses.dialogContent}>
                 <div className={classes.logoIcon}>
-                    <TwitterIcon />
+                    {/*<TwitterIcon />*/}
                 </div>
                 <div className={classes.contentWrapper}>
                     <Typography variant={"h3"} component={"div"}>

@@ -38,7 +38,7 @@ const DialogWrapper: FC<DialogWrapperProps> = (
             <DialogContent className={classes.dialogContent}>
                 {logo && (
                     <div className={classes.logoIcon}>
-                        <TwitterIcon />
+                        {/*<TwitterIcon />*/}
                     </div>
                 )}
                 {children}

@@ -36,7 +36,7 @@ const ProfileModal: FC<ProfileModalProps> = (
         <Dialog transitionDuration={0} open={isOpen} onClose={onClose} hideBackdrop={hideBackdrop}>
             <DialogContent className={classes.container}>
                 <div className={classes.logoIcon}>
-                    <TwitterIcon />
+                    {/*<TwitterIcon />*/}
                 </div>
                 <Typography variant={"h3"} component={"div"} className={classes.title}>
                     {title}

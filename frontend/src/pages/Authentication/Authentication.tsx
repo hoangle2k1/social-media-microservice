@@ -5,7 +5,7 @@ import { Button, List, ListItem, Typography } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 
 import { useAuthenticationStyles } from "./AuthenticationStyles";
-import { CommunityIcon, ReplyIcon, SearchIcon } from "../../icons";
+import {CommunityIcon, ReplyIcon, SearchIcon, TweetIcon} from "../../icons";
 import RegistrationModal from "./RegistrationModal/RegistrationModal";
 import CustomizeModal from "./CustomizeModal/CustomizeModal";
 import CreateAccountModal from "./CreateAccountModal/CreateAccountModal";
@@ -30,7 +30,7 @@ const Authentication: FC = (): ReactElement => {
     return (
         <div className={classes.wrapper}>
             <section className={classes.leftSide}>
-                <TwitterIcon color="primary" className={classes.leftSideTwitterIcon} />
+                {/*<TwitterIcon color="primary" className={classes.leftSideTwitterIcon} />*/}
                 <List className={classes.leftSideListInfo}>
                     <ListItem>
                         <Typography variant="h6">
@@ -54,12 +54,12 @@ const Authentication: FC = (): ReactElement => {
             </section>
             <section className={classes.rightSide}>
                 <div className={classes.rightSideWrapper}>
-                    <TwitterIcon color="primary" className={classes.rightSideTwitterIcon} />
+                    {/*<TwitterIcon color="primary" className={classes.rightSideTwitterIcon} />*/}
                     <Typography className={classes.rightSideTittle} variant="h4">
                         See what's happening in the world right now
                     </Typography>
                     <Typography>
-                        <b>Join Twitter today!</b>
+                        <b>Join social media today!</b>
                     </Typography>
                     <br />
                     <Button

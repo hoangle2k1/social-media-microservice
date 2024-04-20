@@ -13,6 +13,7 @@ import { signOut } from "../../../store/ducks/user/actionCreators";
 import { ACCOUNT_SIGNIN } from "../../../constants/path-constants";
 import { TOKEN } from "../../../constants/common-constants";
 import { useModalWindow } from "../../../hook/useModalWindow";
+import {TweetIcon} from "../../../icons";
 
 const LogoutModal = (): ReactElement => {
     const classes = useLogoutModalStyles();
@@ -37,9 +38,9 @@ const LogoutModal = (): ReactElement => {
             <Dialog open={visibleModalWindow} onClose={onCloseModalWindow}>
                 <DialogContent style={{ padding: 0 }}>
                     <div className={classes.modalWrapper}>
-                        <TwitterIcon />
+                        {/*<TwitterIcon />*/}
                         <Typography variant={"h5"} component={"div"}>
-                            Log out of Twitter?
+                            Log out ?
                         </Typography>
                         <Typography variant={"subtitle1"} component={"div"}>
                             You can always log back in at any time. If you just want to switch accounts,
