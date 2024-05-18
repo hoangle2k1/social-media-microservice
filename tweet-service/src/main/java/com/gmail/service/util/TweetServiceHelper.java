@@ -31,6 +31,8 @@ import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
@@ -39,6 +41,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,6 +57,7 @@ public class TweetServiceHelper {
     private final UserService userService;
     private final TagClient tagClient;
     private final BasicMapper basicMapper;
+    private final RestTemplate restTemplate;
 
     @Value("${google.api.url}")
     private String googleApiUrl;
@@ -61,8 +65,11 @@ public class TweetServiceHelper {
     @Value("${google.api.key}")
     private String googleApiKey;
 
+    private final String CHECK_TOXIC_URL = "http://localhost:5001/filter?text=";
+
     @Transactional
     public TweetResponse createTweet(Tweet tweet) {
+        System.out.println("helper function: " + tweet.getText());
         tweetValidationHelper.checkTweetTextLength(tweet.getText());
         User authUser = userService.getAuthUser();
         tweet.setAuthor(authUser);
@@ -76,7 +83,28 @@ public class TweetServiceHelper {
                 updateTweetCountProducer.sendUpdateTweetCountEvent(authUser.getId(), true);
             }
         }
+
+        if (isToxicWord(tweet.getText())) {
+            System.out.println("tweet contains toxic word");
+            tweet.setText("This text contain hate and offensive language.");
+        }
+        System.out.println("save tweet done");
         return processTweetResponse(tweet);
+    }
+
+    public boolean isToxicWord(String text) {
+        System.out.println("Check toxic word with text: " + text);
+        String url = CHECK_TOXIC_URL + text;
+
+        HttpHeaders headers = new HttpHeaders();
+        RestTemplate restTemplate = new RestTemplate();
+        System.out.println("Send request");
+        ResponseEntity<String> response = restTemplate.getForEntity(url, String.class, headers);
+        System.out.println("Response status code: " + response.getStatusCode());
+        System.out.println("Response body: " + response.getBody());
+
+        if (response.getBody().equals("1")) return true;
+        return false;
     }
 
     @SneakyThrows
@@ -150,6 +178,7 @@ public class TweetServiceHelper {
         parseUserMentionFromText(tweetResponse);
         tagClient.parseHashtagsFromText(tweet.getId(), new TweetTextRequest(tweet.getText()));
         notificationClient.sendTweetNotificationToSubscribers(tweet.getId());
+        System.out.println("Tweet response: " + tweetResponse.getText());
         return tweetResponse;
     }
 

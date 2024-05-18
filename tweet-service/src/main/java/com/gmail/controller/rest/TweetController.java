@@ -106,9 +106,12 @@ public class TweetController {
 
     @PostMapping
     public ResponseEntity<TweetResponse> createTweet(@RequestBody TweetRequest tweetRequest) {
+        System.out.println("Create tweet: " + tweetRequest.getText());
         TweetResponse tweet = tweetMapper.createTweet(tweetRequest);
+        System.out.println("Send websocket client");
         webSocketClient.send(WebsocketConstants.TOPIC_FEED_ADD, tweet);
         webSocketClient.send(WebsocketConstants.TOPIC_USER_ADD_TWEET + tweet.getAuthor().getId(), tweet);
+        System.out.println("Create tweet success");
         return ResponseEntity.ok(tweet);
     }
 
